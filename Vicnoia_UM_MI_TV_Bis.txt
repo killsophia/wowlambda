@@ -1,0 +1,173 @@
+
+
+Raid Events:
+  raid_event=/movement,players_only=1,first=45,cooldown=85,distance=50,last=360
+
+
+DPS Ranking:
+  86336 100.0%  Raid
+  86336  100.0%  vicnoia
+
+HPS Ranking:
+      0 100.0%  Raid
+
+Player: vicnoia blood_elf mage frost 100
+  DPS: 86335.9  DPS-Error=56.4/0.065%  DPS-Range=10774/12.5%  DPS-Convergence=64.8%
+  HPS: 0.0 HPS-Error=0.0/0.0%
+  DPR=24.1  RPS-Out=2986.7 RPS-In=2986.7  Resource=(mana) Waiting=0.4 ApM=51.6
+  Origin: http://www.askmrrobot.com/wow/player/tw/%e5%86%b0%e9%a2%a8%e5%b4%97%e5%93%a8/vicnoia
+  Talents: 3111211
+  Core Stats:    strength=676|644(644)  agility=935|891(891)  stamina=8151|7410(7410)  intellect=6770|6186(5944)  spirit=1153|1153(1153)  health=489060|444600  mana=160000|160000
+  Generic Stats: mastery=47.66%|36.36%(890)  multistrike=35.80%|20.80%(1373)  versatility=4.75%|1.75%(228)  leech=0.00%|0.00%(0)
+  Spell Stats:   power=10247|8731(2545)  hit=15.00%|15.00%(0)  crit=26.71%|21.71%(1728)  haste=26.35%|20.33%(1830)  speed=26.35%|20.33%  manareg=3639|3466(0)
+  Attack Stats:  power=0|0(0)  hit=7.50%|7.50%(0)  crit=26.71%|21.71%(1728)  expertise=7.50%|7.50%(0)  haste=26.35%|20.33%(1830)  speed=26.35%|20.33%
+  Defense Stats: armor=1111|1111(1111) miss=3.00%|3.00%  dodge=3.00%|3.00%(0)  parry=0.00%|0.00%(0)  block=0.00%|0.00%(0) crit=0.00%|0.00%  versatility=2.38%|0.88%(228)
+  Glyphs: 56364/56377/56384/89749/115705/146662
+  Priorities (actions.precombat):
+    flask,type=greater_draenic_intellect_flask/food,type=salty_squid_roll
+    arcane_brilliance/water_elemental/snapshot_stats/rune_of_power/mirror_image
+    potion,name=draenic_intellect/frostbolt,if=!talent.frost_bomb.enabled/frost_bomb
+  Priorities:
+    counterspell,if=target.debuff.casting.react
+    time_warp,if=target.health.pct<25|time>5
+    call_action_list,name=movement,if=raid_event.movement.exists/mirror_image
+    rune_of_power,if=buff.rune_of_power.remains<cast_time
+    rune_of_power,if=(cooldown.icy_veins.remains<gcd.max&buff.rune_of_power.remains<20)|(cooldown.prismatic_crystal.remains<gcd.max&buff.rune_of_power.remains<10)
+    water_jet,if=time<1&active_enemies<4&!talent.prismatic_crystal.enabled
+    call_action_list,name=cooldowns,if=target.time_to_die<24
+    call_action_list,name=crystal_sequence,if=talent.prismatic_crystal.enabled&(cooldown.prismatic_crystal.remains<=gcd.max|pet.prismatic_crystal.active)&(legendary_ring.cooldown.remains<gcd.max|legendary_ring.cooldown.remains+15>target.time_to_die|!legendary_ring.has_cooldown)
+    call_action_list,name=water_jet,if=prev_off_gcd.water_jet|debuff.water_jet.remains>0
+    call_action_list,name=aoe,if=active_enemies>=4
+    call_action_list,name=single_target
+  Priorities (actions.movement):
+    blink,if=movement.distance>10/blazing_speed,if=movement.remains>0
+    ice_floes,if=buff.ice_floes.down&(raid_event.movement.distance>0|raid_event.movement.in<action.frostbolt.cast_time)
+  Priorities (actions.cooldowns):
+    icy_veins/blood_fury/berserking/arcane_torrent
+    potion,name=draenic_intellect,if=buff.bloodlust.up|buff.icy_veins.up
+    use_item,slot=finger1
+  Priorities (actions.init_water_jet):
+    frost_bomb,if=remains<4*spell_haste*(1+set_bonus.tier18_4pc)+cast_time
+    water_jet,if=prev_gcd.frostbolt|action.frostbolt.travel_time<spell_haste
+    frostbolt
+  Priorities (actions.water_jet):
+    frostbolt,if=prev_off_gcd.water_jet
+    ice_lance,if=set_bonus.tier18_4pc&buff.fingers_of_frost.react>2*set_bonus.tier18_4pc&buff.shatterlance.up
+    frostfire_bolt,if=set_bonus.tier18_4pc&buff.brain_freeze.react=2
+    frostbolt,if=t18_class_trinket&debuff.water_jet.remains>cast_time+travel_time&buff.fingers_of_frost.react&!buff.shatterlance.up
+    ice_lance,if=!t18_class_trinket&buff.fingers_of_frost.react>=2+2*set_bonus.tier18_4pc&action.frostbolt.in_flight
+    frostbolt,if=!set_bonus.tier18_4pc&debuff.water_jet.remains>cast_time+travel_time
+  Priorities (actions.single_target):
+    call_action_list,name=cooldowns,if=!talent.prismatic_crystal.enabled|(cooldown.prismatic_crystal.remains>15&!legendary_ring.has_cooldown)
+    ice_lance,if=buff.fingers_of_frost.react&(buff.fingers_of_frost.remains<action.frostbolt.execute_time|buff.fingers_of_frost.remains<buff.fingers_of_frost.react*gcd.max)
+    frostfire_bolt,if=buff.brain_freeze.react&(buff.brain_freeze.remains<action.frostbolt.execute_time|buff.brain_freeze.remains<buff.brain_freeze.react*gcd.max)
+    frost_bomb,if=(!talent.prismatic_crystal.enabled|legendary_ring.cooldown.remains>45)&cooldown.frozen_orb.remains<gcd.max&debuff.frost_bomb.remains<10
+    frozen_orb,if=(!talent.prismatic_crystal.enabled|legendary_ring.cooldown.remains>45)&buff.fingers_of_frost.stack<2&cooldown.icy_veins.remains>45-20*talent.thermal_void.enabled
+    ice_lance,if=buff.fingers_of_frost.react&buff.shatterlance.up
+    frost_bomb,if=remains<action.ice_lance.travel_time+t18_class_trinket*action.frostbolt.execute_time&(buff.fingers_of_frost.react>=(2+set_bonus.tier18_4pc*2)%(1+t18_class_trinket)|(buff.fingers_of_frost.react&(talent.thermal_void.enabled|buff.fingers_of_frost.remains<gcd.max*(buff.fingers_of_frost.react+1))))
+    ice_nova,if=target.time_to_die<10|(charges=2&(!talent.prismatic_crystal.enabled|!cooldown.prismatic_crystal.up))
+    ice_lance,if=!t18_class_trinket&(buff.fingers_of_frost.react>=2+set_bonus.tier18_4pc*2|(buff.fingers_of_frost.react>1+set_bonus.tier18_4pc&active_dot.frozen_orb))
+    comet_storm
+    ice_nova,if=(!talent.prismatic_crystal.enabled|(charges=1&cooldown.prismatic_crystal.remains>recharge_time&(buff.incanters_flow.stack>3|!talent.ice_nova.enabled)))&(buff.icy_veins.up|(charges=1&cooldown.icy_veins.remains>recharge_time))
+    frostfire_bolt,if=buff.brain_freeze.react
+    call_action_list,name=init_water_jet,if=pet.water_elemental.cooldown.water_jet.remains<=gcd.max*talent.frost_bomb.enabled&buff.fingers_of_frost.react<2+2*set_bonus.tier18_4pc&!active_dot.frozen_orb
+    frostbolt,if=t18_class_trinket&buff.fingers_of_frost.react&!buff.shatterlance.up
+    ice_lance,if=talent.frost_bomb.enabled&buff.fingers_of_frost.react&debuff.frost_bomb.remains>travel_time&(!talent.thermal_void.enabled|cooldown.icy_veins.remains>8)
+    frostbolt,if=set_bonus.tier17_2pc&buff.ice_shard.up&!(talent.thermal_void.enabled&buff.icy_veins.up&buff.icy_veins.remains<10)
+    ice_lance,if=!talent.frost_bomb.enabled&buff.fingers_of_frost.react&(!talent.thermal_void.enabled|cooldown.icy_veins.remains>8)
+    frostbolt/ice_lance,moving=1
+  Actions:
+    arcane_torrent            Count=  5.5| 91.55sec  DPE=     0| 0%  DPET=    0  DPR= 0.0  pDPS=    0  Miss=0.00%
+    blink                     Count=  4.0| 85.03sec  DPE=     0| 0%  DPET=    0  DPR= 0.0  pDPS=    0  Miss=0.00%
+    doom_nova                 Count= 86.9|  4.97sec  DPE= 16518| 4%  DPET=    0  DPR= 0.0  pDPS= 3191  Miss=0.00%  Hit=10163|9402|13510  Crit=20343|18803|27020|23.7%  Mult=67.9| 3109| 2820| 4053|76.3%  MultCrit=21.1| 6217| 5641| 8106|23.7%
+    draenic_intellect_potion  Count=  2.0|  0.00sec  DPE=     0| 0%  DPET=    0  DPR= 0.0  pDPS=    0
+    frostbolt                 Count=144.6|  3.15sec  DPE= 49189|12%  DPET=34004  DPR= 7.7  pDPS=10504  Miss=0.00%  Hit=20558|19182|30828  Crit=41120|38364|61656|23.7%  Mult=105.7| 6246| 5755| 9248|76.3%  MultCrit=32.9|12494|11509|18497|23.7%
+    frostfire_bolt            Count= 62.0|  7.24sec  DPE=116059|13%  DPET=84685  DPR=77.6  pDPS=10918  Miss=0.00%  Hit=26235|17356|57182  Crit=74228|34712|114365|71.1%  Mult=17.6| 8123| 5207|17155|27.8%  MultCrit=45.7|22693|10414|34309|72.2%
+    frozen_orb                Count=  7.2| 65.49sec  DPE= 74790| 0%  DPET=65259  DPR= 4.7  pDPS=    0  Miss=0.00%  TickCount=71  UpTime=15.8%
+    frozen_orb_bolt           Count=  0.0|  0.00sec  DPE=     0| 1%  DPET=    0  DPR= 0.0  pDPS= 1197  MissTick=0.0%  Tick=5786|5142|8264  CritTick=11573|10285|16529|23.7%  MultTick= 1777| 1543| 2479|76.2%  MultCritTick= 3554| 3085| 4959|23.8%
+    ice_floes                 Count= 18.3| 23.85sec  DPE=     0| 0%  DPET=    0  DPR= 0.0  pDPS=    0  Miss=0.00%
+    ice_lance                 Count=119.2|  3.77sec  DPE= 98254|30%  DPET=85499  DPR=61.4  pDPS=26001  Miss=0.00%  Hit=29233|5367|73969  Crit=88925|10734|147938|77.7%  Mult=26.2| 8914| 1610|22191|22.3%  MultCrit=91.4|27073| 3220|44381|77.7%
+    icicle_fb                 Count=281.2|  1.71sec  DPE=  8455| 6%  DPET=    0  DPR= 0.0  pDPS= 5273  Miss=0.00%  Hit=8497|2482|54510
+    icicle_ffb                Count=124.2|  3.70sec  DPE= 18336| 6%  DPET=    0  DPR= 0.0  pDPS= 5057  Miss=0.00%  Hit=18426|2482|54510
+    icy_veins                 Count=  3.0|181.62sec  DPE=     0| 0%  DPET=    0  DPR= 0.0  pDPS=    0  Miss=0.00%
+    mirror_image              Count=  4.4|120.75sec  DPE=765832| 0%  DPET=850855  DPR=310.6  pDPS=    0  Miss=0.00%
+    nithramus                 Count=  4.1|121.63sec  DPE=852531| 9%  DPET=    0  DPR= 0.0  pDPS= 7769  Miss=0.00%  Hit=852583|276812|1746660
+    unstable_magic_explosion  Count= 81.5|  6.29sec  DPE= 11820| 2%  DPET=    0  DPR= 0.0  pDPS= 2140  Miss=0.00%  Hit=11819|2603|57182
+   water_elemental  (DPS=6869.9)
+    water_jet                 Count= 13.9| 33.45sec  DPE= 90865| 3%  DPET= 8817  DPR= 0.0  pDPS= 2813  Miss=0.00%  TickCount=175  MissTick=0.0%  Tick=4525|4189|6744  CritTick=9053|8378|13488|23.7%  MultTick= 1381| 1257| 2023|76.3%  MultCritTick= 2761| 2513| 4046|23.7%  UpTime=29.5%
+    waterbolt                 Count=147.0|  2.98sec  DPE= 12452| 5%  DPET= 6575  DPR= 0.0  pDPS= 4057  Miss=0.00%  Hit=7769|7204|11577  Crit=15533|14407|23154|23.7%  Mult=111.2| 2356| 2161| 3473|76.3%  MultCrit=34.6| 4712| 4322| 6946|23.7%
+   mirror_image  (DPS=20360.1)
+    frostbolt                 Count=333.0|  1.72sec  DPE= 10023| 9%  DPET= 6951  DPR= 0.0  pDPS=20360  Miss=0.00%  Hit=6063|5045|8108  Crit=12122|10090|16215|23.7%  Mult=286.7| 1839| 1513| 2432|76.3%  MultCrit=88.9| 3677| 3027| 4865|23.7%
+  Constant Buffs: attack_power_multiplier/critical_strike/frost_armor/greater_draenic_intellect_flask/haste/mastery
+  Constant Buffs: multistrike/salty_squid_roll_food/spell_power_multiplier/stamina/str_agi_int/versatility
+  Dynamic Buffs:
+    bloodlust                : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime= 9.01%  benefit=15%
+    brain_freeze             : start=35.5 refresh= 13.8 interval= 12.8 trigger=  9.2 uptime=28.75%  benefit=77%
+    draenic_intellect_potion : start= 2.0 refresh=  0.0 interval= 86.5 trigger=  0.0 uptime=10.81%  benefit=11%
+    enhanced_frostbolt       : start=25.4 refresh=  0.2 interval= 18.1 trigger= 17.9 uptime= 6.58%  benefit=18%
+    fingers_of_frost         : start=28.1 refresh= 82.1 interval= 16.2 trigger=  4.1 uptime=68.91%  benefit=87%
+    ice_floes                : start=17.7 refresh=  0.6 interval= 24.5 trigger= 23.7 uptime=11.34%  benefit=12%
+    icy_veins                : start= 3.0 refresh=  0.0 interval=181.6 trigger=181.6 uptime=28.70%  benefit=32%
+    mark_of_warsong          : start= 7.4 refresh=  3.2 interval= 64.2 trigger= 43.1 uptime=38.84%  benefit=39%
+    nithramus                : start= 4.3 refresh=  0.0 interval=121.6 trigger=121.6 uptime=14.07%  benefit=25%
+    raid_movement            : start= 4.0 refresh=  0.0 interval= 85.0 trigger= 85.0 uptime= 3.51%  benefit= 4%
+    shatterlance             : start=144.6 refresh=  0.0 interval=  3.1 trigger=  3.1 uptime=28.83%  benefit=76%
+  Benefits:
+    100.0% : water_elemental               
+  Up-Times:
+     13.8% : Mana Cap                      
+  Gains:
+     21733.2 : arcane_torrent (mana)  (overflow=17.0%)
+    1321636.0 : mp5_regen      (mana)  (overflow=23.3%)
+  Waiting: 0.36%
+
+ *** Targets *** 
+
+
+Target: Fluffy_Pillow humanoid enemy unknown 103
+  DPS: 0.0  DPS-Error=0.0/0.000%  DPS-Range=0/0.0%  DPS-Convergence=0.0%
+  HPS: 0.0 HPS-Error=0.0/0.0%
+
+  Talents: 0000000
+  Core Stats:    strength=0|0(0)  agility=0|0(0)  stamina=0|0(0)  intellect=0|0(0)  spirit=0|0(0)  health=0|30991228  mana=0|0
+  Generic Stats: mastery=0.00%|0.00%(0)  multistrike=0.00%|0.00%(0)  versatility=0.00%|0.00%(0)  leech=0.00%|0.00%(0)
+  Spell Stats:   power=0|0(0)  hit=0.00%|0.00%(0)  crit=0.00%|0.00%(0)  haste=0.00%|0.00%(0)  speed=0.00%|0.00%  manareg=0|0(0)
+  Attack Stats:  power=0|0(0)  hit=0.00%|0.00%(0)  crit=5.00%|5.00%(0)  expertise=0.00%|0.00%(0)  haste=0.00%|0.00%(0)  speed=0.00%|0.00%
+  Defense Stats: armor=1938|1938(1938) miss=3.00%|3.00%  dodge=3.00%|3.00%(0)  parry=3.00%|3.00%(0)  block=3.00%|3.00%(0) crit=0.00%|0.00%  versatility=0.00%|0.00%(0)
+  Priorities (actions.precombat):
+    snapshot_stats
+  Priorities:
+
+  Actions:
+  Constant Buffs: attack_power_multiplier/bleeding/critical_strike/haste/mastery/mortal_wounds/multistrike
+  Constant Buffs: spell_power_multiplier/stamina/str_agi_int/versatility
+  Dynamic Buffs:
+    Health Decade (0 - 10)   : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=10.31%  benefit=10%
+    Health Decade (10 - 20)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=11.16%  benefit=11%
+    Health Decade (20 - 30)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=10.54%  benefit=11%
+    Health Decade (30 - 40)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=11.58%  benefit=12%
+    Health Decade (40 - 50)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=11.09%  benefit=11%
+    Health Decade (50 - 60)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=11.10%  benefit=11%
+    Health Decade (60 - 70)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=10.82%  benefit=11%
+    Health Decade (70 - 80)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime=12.90%  benefit=13%
+    Health Decade (80 - 90)  : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime= 6.05%  benefit= 6%
+    Health Decade (90 - 100) : start= 1.0 refresh=  0.0 interval=  0.0 trigger=  0.0 uptime= 4.44%  benefit= 4%
+    mark_of_doom             : start=10.8 refresh=  2.7 interval= 43.1 trigger= 33.8 uptime=26.86%  benefit=27%
+    water_jet                : start=13.9 refresh=  0.0 interval= 33.5 trigger= 33.5 uptime=32.56%  benefit=43%
+  Waiting: 0.00%
+Waiting:
+     0.4% : vicnoia
+
+Baseline Performance:
+  RNG Engine    = sse2-sfmt
+  Iterations    = 10007
+  TotalEvents   = 63457728
+  MaxEventQueue = 69
+  TargetHealth  = 30991228
+  SimSeconds    = 4517269
+  CpuSeconds    = 92.431
+  WallSeconds   = 12.384
+  SpeedUp       = 48872
+  EndTime       = 2016-04-07 10:53:17 (1459990397)
+
+
