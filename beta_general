@@ -1,0 +1,110 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on https://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" href="stylesheets/github-dark.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Wowlambda</title>
+  <meta name="description" content="wow">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Wow-lambda公會</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">Legion Beta情報匯總：一般</p>
+      <div id="main" role="main">
+      
+</br>
+<pre><code>recent update: 24/06/2016
+
+beta build: 22016
+</code></pre>
+
+<ol>
+<li>舊套裝飾品</li>
+</ol>
+
+<blockquote>
+  <p>地獄火的飾品在Lv109之後失效，套裝效果似乎是進到legion就失效，待確認</p>
+
+<p>傳家寶飾品待確認</p>
+</blockquote>
+
+<ol>
+<li>製造專業</li>
+</ol>
+
+<blockquote>
+  <p>薩格拉斯之血拾綁，造成雙採和無採集角色異常尷尬。後續待跟進。</p>
+
+<p>製造應隨同練級一起進行。</p>
+
+<p>任務：魔火試煉 所需要的的物品（裁縫/制皮/鍛造製造）在測試服上異常昂貴。</p>
+</blockquote>
+
+<ol>
+<li>升級路線</li>
+</ol>
+
+<blockquote>
+  <p>維爾薩拉的世界之柱不需打本即可入手，任務結束會給ilvl800的胸，是否改動待確認。</p>
+</blockquote>
+
+<ol>
+<li>聲望相關</li>
+</ol>
+
+<blockquote>
+  <p>每張地圖有對應的陣營，為了能在滿級時順利開啟世界任務，每個陣營的聲望達到友善之後再換下張地圖比較好。基本上就是主線做完，加一些小的零星任務。</p>
+</blockquote>
+
+<p><ol>
+<li>團本相關</p>
+
+<blockquote>
+  <p>有消息指出N/H團本將僅能使用個人拾取，但若拾取到的物品等級低於目前同格裝備等級，則可與其他團隊成員交易。待確認。</li>
+</ol></p>
+</blockquote>
+
+
+
+      </div>
+    </div>
+    
+ 
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/killsophia" class="avatar"><img src="https://avatars3.githubusercontent.com/u/1498395?v=3&amp;s=60" width="48" height="48"></a> <a href="https://github.com/killsophia">killsophia</a> maintains <a href="https://github.com/killsophia/wowlambda">Wowlambda</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href=/wowlambda/index/html>Back to Main Page</a>
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/killsophia/wowlambda/tarball/master" class="tar">tar</a><a href="https://github.com/killsophia/wowlambda/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
